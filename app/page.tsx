@@ -6,6 +6,7 @@ import ProcessForm from "@/components/process-form"
 import GanttChart from "@/components/gantt-chart"
 import ResultsTable from "@/components/results-table"
 import AnimationControls from "@/components/animation-controls"
+import AlgorithmComparisonChart from "@/components/algorithm-comparison-chart"
 import type { Process, SchedulingResult } from "@/lib/types"
 import { runSchedulingAlgorithm } from "@/lib/scheduler"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -158,9 +159,10 @@ export default function Home() {
 
         {result && (
           <Tabs defaultValue="gantt" className="mb-8">
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 bg-blue-950/50 border border-blue-500/20">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-blue-950/50 border border-blue-500/20">
               <TabsTrigger value="gantt" className="data-[state=active]:bg-blue-600">Gantt Chart</TabsTrigger>
               <TabsTrigger value="metrics" className="data-[state=active]:bg-blue-600">Process Metrics</TabsTrigger>
+              <TabsTrigger value="comparison" className="data-[state=active]:bg-blue-600">Algorithm Comparison</TabsTrigger>
             </TabsList>
 
             <TabsContent value="gantt" className="mt-6">
@@ -217,6 +219,10 @@ export default function Home() {
                   <ResultsTable processes={result.processes} />
                 </CardContent>
               </Card>
+            </TabsContent>
+
+            <TabsContent value="comparison" className="mt-6">
+              <AlgorithmComparisonChart processes={processes} timeQuantum={timeQuantum} />
             </TabsContent>
           </Tabs>
         )}
