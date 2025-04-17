@@ -23,7 +23,7 @@ const ALGORITHMS = [
   },
   { 
     id: "srtf", 
-    name: "Shortest Remaining Time First (SRTF)",
+    name: " Shortest Remaining Time First (SRTF)",
     description: "Preemptive version of SJF. Process with shortest remaining time is always executed first.",
     pros: "Optimal average waiting time, responsive to short processes",
     cons: "High overhead due to frequent context switching, requires continuous monitoring"
@@ -168,7 +168,7 @@ export default function AlgorithmComparisonChart({
             <path d="M3 3v18h18"></path>
             <path d="m19 9-5 5-4-4-3 3"></path>
           </svg>
-          Algorithm Comparison
+          Algo Comparison
         </CardTitle>
         <CardDescription className="text-blue-300/70">
           Performance comparison of all CPU scheduling algorithms
@@ -176,7 +176,7 @@ export default function AlgorithmComparisonChart({
       </CardHeader>
       <CardContent className="pt-4">
         <Tabs defaultValue="averages" className="w-full">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 bg-blue-950/50 border border-blue-500/20">
+          <TabsList className="grid w-full max-w-full sm:max-w-md mx-auto grid-cols-3 bg-blue-950/50 border border-blue-500/20 text-xs sm:text-sm">
             <TabsTrigger
               value="averages"
               className="data-[state=active]:bg-blue-600"
@@ -201,19 +201,13 @@ export default function AlgorithmComparisonChart({
             <div className="space-y-8">
               {/* Average Waiting Time Chart */}
               <div>
-                <h3 className="text-lg font-medium text-blue-400 mb-2">Average Waiting Time</h3>
+                <h3 className="text-base sm:text-lg font-medium text-blue-400 mb-2">Average Waiting Time</h3>
                 <div className="bg-blue-950/30 p-6 rounded-lg relative">
-                  {/* Add y-axis labels */}
-                  <div className="absolute left-2 top-0 h-full flex flex-col justify-between py-4 text-xs text-blue-300/70">
-                    <div>{maxWaitingTime.toFixed(2)}</div>
-                    <div>{((maxWaitingTime + minWaitingTime) / 2).toFixed(2)}</div>
-                    <div>{minWaitingTime.toFixed(2)}</div>
-                  </div>
-                  {/* Add grid lines */}
+                  {/* Grid lines only */}
                   <div className="absolute left-0 top-4 w-full border-t border-blue-500/10"></div>
                   <div className="absolute left-0 top-1/2 w-full border-t border-blue-500/10"></div>
                   <div className="absolute left-0 bottom-4 w-full border-t border-blue-500/10"></div>
-                  <div className="flex items-end h-96 gap-4 pl-8">
+                  <div className="flex items-end h-48 sm:h-64 gap-1 sm:gap-4">
                     {ALGORITHMS.map((algorithm, index) => {
                       const result = results[algorithm.id];
                       if (!result) return null;
@@ -237,10 +231,10 @@ export default function AlgorithmComparisonChart({
                               }}
                             />
                           </div>
-                          <div className="text-xs text-blue-300 text-center font-semibold">
+                          <div className="text-[10px] sm:text-xs text-blue-300 text-center font-semibold">
                             {result.averageWaitingTime.toFixed(2)}
                           </div>
-                          <div className="text-xs text-blue-300/70 mt-2 text-center max-w-24 truncate font-medium" title={algorithm.name}>
+                          <div className="text-[10px] sm:text-xs text-blue-300/70 mt-1 sm:mt-2 text-center max-w-16 sm:max-w-24 truncate font-medium" title={algorithm.name}>
                             {algorithm.name.split(' ')[0]}
                           </div>
                         </div>
@@ -252,19 +246,13 @@ export default function AlgorithmComparisonChart({
 
               {/* Average Turnaround Time Chart */}
               <div>
-                <h3 className="text-lg font-medium text-blue-400 mb-2">Average Turnaround Time</h3>
+                <h3 className="text-base sm:text-lg font-medium text-blue-400 mb-2">Average Turnaround Time</h3>
                 <div className="bg-blue-950/30 p-6 rounded-lg relative">
-                  {/* Add y-axis labels */}
-                  <div className="absolute left-2 top-0 h-full flex flex-col justify-between py-4 text-xs text-blue-300/70">
-                    <div>{maxTurnaroundTime.toFixed(2)}</div>
-                    <div>{((maxTurnaroundTime + minTurnaroundTime) / 2).toFixed(2)}</div>
-                    <div>{minTurnaroundTime.toFixed(2)}</div>
-                  </div>
-                  {/* Add grid lines */}
+                  {/* Grid lines only */}
                   <div className="absolute left-0 top-4 w-full border-t border-blue-500/10"></div>
                   <div className="absolute left-0 top-1/2 w-full border-t border-blue-500/10"></div>
                   <div className="absolute left-0 bottom-4 w-full border-t border-blue-500/10"></div>
-                  <div className="flex items-end h-96 gap-4 pl-8">
+                  <div className="flex items-end h-48 sm:h-64 gap-1 sm:gap-4">
                     {ALGORITHMS.map((algorithm, index) => {
                       const result = results[algorithm.id];
                       if (!result) return null;
@@ -288,10 +276,10 @@ export default function AlgorithmComparisonChart({
                               }}
                             />
                           </div>
-                          <div className="text-xs text-blue-300 text-center font-semibold">
+                          <div className="text-[10px] sm:text-xs text-blue-300 text-center font-semibold">
                             {result.averageTurnaroundTime.toFixed(2)}
                           </div>
-                          <div className="text-xs text-blue-300/70 mt-2 text-center max-w-24 truncate font-medium" title={algorithm.name}>
+                          <div className="text-[10px] sm:text-xs text-blue-300/70 mt-1 sm:mt-2 text-center max-w-16 sm:max-w-24 truncate font-medium" title={algorithm.name}>
                             {algorithm.name.split(' ')[0]}
                           </div>
                         </div>
@@ -303,14 +291,14 @@ export default function AlgorithmComparisonChart({
 
               {/* Comparison Table */}
               <div>
-                <h3 className="text-lg font-medium text-blue-400 mb-2">Metrics Comparison Table</h3>
-                <div className="overflow-x-auto">
+                <h3 className="text-base sm:text-lg font-medium text-blue-400 mb-2">Metrics Comparison Table</h3>
+                <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="border-b border-blue-500/20">
-                        <th className="text-left py-2 px-4 text-blue-300">Algorithm</th>
-                        <th className="text-right py-2 px-4 text-blue-300">Avg. Waiting Time</th>
-                        <th className="text-right py-2 px-4 text-blue-300">Avg. Turnaround Time</th>
+                        <th className="text-left py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">Algorithm</th>
+                        <th className="text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">Avg. Waiting Time</th>
+                        <th className="text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">Avg. Turnaround Time</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -324,7 +312,7 @@ export default function AlgorithmComparisonChart({
                             className={`border-b border-blue-500/10 hover:bg-blue-950/30 cursor-pointer ${selectedAlgorithm === algorithm.id ? 'bg-blue-900/20' : ''}`}
                             onClick={() => setSelectedAlgorithm(selectedAlgorithm === algorithm.id ? null : algorithm.id)}
                           >
-                            <td className="py-2 px-4 text-blue-300">
+                            <td className="py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">
                               <div className="flex items-center gap-2">
                                 <div 
                                   className="w-3 h-3 rounded-full" 
@@ -333,10 +321,10 @@ export default function AlgorithmComparisonChart({
                                 {algorithm.name}
                               </div>
                             </td>
-                            <td className="text-right py-2 px-4 text-blue-300">
+                            <td className="text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">
                               {result.averageWaitingTime.toFixed(2)}
                             </td>
-                            <td className="text-right py-2 px-4 text-blue-300">
+                            <td className="text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">
                               {result.averageTurnaroundTime.toFixed(2)}
                             </td>
                           </tr>
@@ -353,16 +341,16 @@ export default function AlgorithmComparisonChart({
             <div className="space-y-8">
               {/* Process-level Waiting Time */}
               <div>
-                <h3 className="text-lg font-medium text-blue-400 mb-2">Waiting Time Per Process</h3>
-                <div className="overflow-x-auto">
+                <h3 className="text-base sm:text-lg font-medium text-blue-400 mb-2">Waiting Time Per Process</h3>
+                <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="border-b border-blue-500/20">
-                        <th className="text-left py-2 px-4 text-blue-300">Process</th>
+                        <th className="text-left py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">Process</th>
                         {ALGORITHMS.map((algorithm, index) => (
                           <th 
                             key={algorithm.id} 
-                            className={`text-right py-2 px-4 text-blue-300 cursor-pointer ${selectedAlgorithm === algorithm.id ? 'bg-blue-900/20' : ''}`}
+                            className={`text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm cursor-pointer ${selectedAlgorithm === algorithm.id ? 'bg-blue-900/20' : ''}`}
                             onClick={() => setSelectedAlgorithm(selectedAlgorithm === algorithm.id ? null : algorithm.id)}
                           >
                             <div className="flex items-center justify-end gap-2">
@@ -379,16 +367,16 @@ export default function AlgorithmComparisonChart({
                     <tbody>
                       {processes.map((process) => (
                         <tr key={process.id} className="border-b border-blue-500/10 hover:bg-blue-950/30">
-                          <td className="py-2 px-4 text-blue-300">{process.name}</td>
+                          <td className="py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">{process.name}</td>
                           {ALGORITHMS.map((algorithm, index) => {
                             const result = results[algorithm.id];
-                            if (!result) return <td key={algorithm.id} className="text-right py-2 px-4 text-blue-300">-</td>;
+                            if (!result) return <td key={algorithm.id} className="text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">-</td>;
                             
                             const processResult = result.processes.find(p => p.id === process.id);
                             return (
                               <td 
                                 key={algorithm.id} 
-                                className={`text-right py-2 px-4 text-blue-300 ${selectedAlgorithm && selectedAlgorithm !== algorithm.id ? 'opacity-40' : ''}`}
+                                className={`text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm ${selectedAlgorithm && selectedAlgorithm !== algorithm.id ? 'opacity-40' : ''}`}
                               >
                                 {processResult ? processResult.waitingTime.toFixed(2) : '-'}
                               </td>
@@ -403,16 +391,16 @@ export default function AlgorithmComparisonChart({
 
               {/* Process-level Turnaround Time */}
               <div>
-                <h3 className="text-lg font-medium text-blue-400 mb-2">Turnaround Time Per Process</h3>
-                <div className="overflow-x-auto">
+                <h3 className="text-base sm:text-lg font-medium text-blue-400 mb-2">Turnaround Time Per Process</h3>
+                <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
                   <table className="w-full border-collapse">
                     <thead>
                       <tr className="border-b border-blue-500/20">
-                        <th className="text-left py-2 px-4 text-blue-300">Process</th>
+                        <th className="text-left py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">Process</th>
                         {ALGORITHMS.map((algorithm, index) => (
                           <th 
                             key={algorithm.id} 
-                            className={`text-right py-2 px-4 text-blue-300 cursor-pointer ${selectedAlgorithm === algorithm.id ? 'bg-blue-900/20' : ''}`}
+                            className={`text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm cursor-pointer ${selectedAlgorithm === algorithm.id ? 'bg-blue-900/20' : ''}`}
                             onClick={() => setSelectedAlgorithm(selectedAlgorithm === algorithm.id ? null : algorithm.id)}
                           >
                             <div className="flex items-center justify-end gap-2">
@@ -429,16 +417,16 @@ export default function AlgorithmComparisonChart({
                     <tbody>
                       {processes.map((process) => (
                         <tr key={process.id} className="border-b border-blue-500/10 hover:bg-blue-950/30">
-                          <td className="py-2 px-4 text-blue-300">{process.name}</td>
+                          <td className="py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">{process.name}</td>
                           {ALGORITHMS.map((algorithm, index) => {
                             const result = results[algorithm.id];
-                            if (!result) return <td key={algorithm.id} className="text-right py-2 px-4 text-blue-300">-</td>;
+                            if (!result) return <td key={algorithm.id} className="text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm">-</td>;
                             
                             const processResult = result.processes.find(p => p.id === process.id);
                             return (
                               <td 
                                 key={algorithm.id} 
-                                className={`text-right py-2 px-4 text-blue-300 ${selectedAlgorithm && selectedAlgorithm !== algorithm.id ? 'opacity-40' : ''}`}
+                                className={`text-right py-1 sm:py-2 px-2 sm:px-4 text-blue-300 text-xs sm:text-sm ${selectedAlgorithm && selectedAlgorithm !== algorithm.id ? 'opacity-40' : ''}`}
                               >
                                 {processResult ? processResult.turnaroundTime.toFixed(2) : '-'}
                               </td>
@@ -456,7 +444,7 @@ export default function AlgorithmComparisonChart({
           <TabsContent value="recommendations" className="mt-6">
             <div className="space-y-8">
               <div>
-                <h3 className="text-lg font-medium text-blue-400 mb-2">Algorithm Recommendations</h3>
+                <h3 className="text-base sm:text-lg font-medium text-blue-400 mb-2">Algorithm Recommendations</h3>
                 <p className="text-blue-300/70 mb-4">
                   Select the most appropriate scheduling algorithm based on your system requirements:
                 </p>
@@ -545,9 +533,9 @@ export default function AlgorithmComparisonChart({
               </div>
 
               <div>
-                <h3 className="text-lg font-medium text-blue-400 mb-2">Performance Analysis</h3>
+                <h3 className="text-base sm:text-lg font-medium text-blue-400 mb-2">Performance Analysis</h3>
                 <div className="bg-blue-950/30 p-4 rounded-lg">
-                  <p className="text-blue-300/80 text-sm mb-4">
+                  <p className="text-blue-300/80 text-xs sm:text-sm mb-2 sm:mb-4">
                     Based on the current set of processes, here's the recommended algorithm:
                   </p>
                   
@@ -569,32 +557,32 @@ export default function AlgorithmComparisonChart({
                         
                         return (
                           <>
-                            <div className="flex items-center gap-3 p-3 bg-blue-900/20 rounded-lg">
+                            <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-blue-900/20 rounded-lg">
                               <div className="flex-shrink-0">
-                                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: getAlgorithmColor(ALGORITHMS.findIndex(a => a.id === bestWaitingAlgo.id)) }}>
+                                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: getAlgorithmColor(ALGORITHMS.findIndex(a => a.id === bestWaitingAlgo.id)) }}>
                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M20 6 9 17l-5-5"></path>
                                   </svg>
                                 </div>
                               </div>
                               <div>
-                                <h4 className="text-blue-300 font-medium">{bestWaitingAlgo.name}</h4>
-                                <p className="text-blue-300/70 text-xs">Best for minimizing waiting time ({results[bestWaitingAlgo.id].averageWaitingTime.toFixed(2)})</p>
+                                <h4 className="text-blue-300 font-medium text-sm sm:text-base">{bestWaitingAlgo.name}</h4>
+                                <p className="text-blue-300/70 text-[10px] sm:text-xs">Best for minimizing waiting time ({results[bestWaitingAlgo.id].averageWaitingTime.toFixed(2)})</p>
                               </div>
                             </div>
                             
                             {bestTurnaroundAlgo.id !== bestWaitingAlgo.id && (
-                              <div className="flex items-center gap-3 p-3 bg-blue-900/20 rounded-lg">
+                              <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-blue-900/20 rounded-lg">
                                 <div className="flex-shrink-0">
-                                  <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: getAlgorithmColor(ALGORITHMS.findIndex(a => a.id === bestTurnaroundAlgo.id)) }}>
+                                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: getAlgorithmColor(ALGORITHMS.findIndex(a => a.id === bestTurnaroundAlgo.id)) }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                       <path d="M20 6 9 17l-5-5"></path>
                                     </svg>
                                   </div>
                                 </div>
                                 <div>
-                                  <h4 className="text-blue-300 font-medium">{bestTurnaroundAlgo.name}</h4>
-                                  <p className="text-blue-300/70 text-xs">Best for minimizing turnaround time ({results[bestTurnaroundAlgo.id].averageTurnaroundTime.toFixed(2)})</p>
+                                  <h4 className="text-blue-300 font-medium text-sm sm:text-base">{bestTurnaroundAlgo.name}</h4>
+                                  <p className="text-blue-300/70 text-[10px] sm:text-xs">Best for minimizing turnaround time ({results[bestTurnaroundAlgo.id].averageTurnaroundTime.toFixed(2)})</p>
                                 </div>
                               </div>
                             )}
