@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 215 28% 17%;
+    --foreground: 210 40% 98%;
+    --card: 215 25% 20%;
+    --card-foreground: 210 40% 98%;
+    --popover: 215 25% 22%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 25% 27%;
+    --muted-foreground: 210 40% 70%;
+    --accent: 210 100% 60%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 210 100% 60%;
+    --chart-1: 195 100% 50%;
+    --chart-2: 160 100% 50%;
+    --chart-3: 120 100% 50%;
+    --chart-4: 280 100% 70%;
+    --chart-5: 340 100% 60%;
+    --radius: 0.25rem;
+    --sidebar-background: 215 30% 15%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 215 25% 27%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 25% 27%;
+    --sidebar-ring: 210 100% 60%;
+  }
+  .dark {
+    --background: 215 30% 12%;
+    --foreground: 210 40% 98%;
+    --card: 215 30% 15%;
+    --card-foreground: 210 40% 98%;
+    --popover: 215 30% 15%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 100% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 30% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 30% 20%;
+    --muted-foreground: 210 40% 70%;
+    --accent: 210 100% 60%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 30% 20%;
+    --input: 215 30% 20%;
+    --ring: 210 100% 60%;
+    --chart-1: 195 100% 50%;
+    --chart-2: 160 100% 50%;
+    --chart-3: 120 100% 50%;
+    --chart-4: 280 100% 70%;
+    --chart-5: 340 100% 60%;
+    --sidebar-background: 215 35% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 100% 60%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 215 30% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 30% 20%;
+    --sidebar-ring: 210 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.technical-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+code, pre {
+  font-family: 'Consolas', 'Courier New', monospace;
+}
